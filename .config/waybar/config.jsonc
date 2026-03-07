@@ -118,7 +118,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "footclient --app-id=wiremix-terminal wiremix"
+        "on-click": "footclient --app-id=wiremix-terminal wiremix -v output"
     },
     "custom/clipboard": {
         "format": " ",
