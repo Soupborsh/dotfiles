@@ -1,6 +1,7 @@
 #!/bin/sh
 # This script was taken from https://www.atlassian.com/git/tutorials/dotfiles
-# Thank you! And it modified quite a bit.
+# Thank you! And it modified quite a bit. To run:
+# curl -sL https://github.com/Soupborsh/dotfiles/raw/refs/heads/install/install.sh | sh
 git clone https://github.com/Soupborsh/dotfiles.git --bare "$HOME/.dotfiles"
 config() {
    /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
@@ -13,8 +14,8 @@ if [ $? -eq 0 ]; then
   	echo "There is a conflict in these files:"
   	echo "$CONFLICTS"
   	echo "Would you like to move them into $HOME/.config-backup"
-  	echo "And proceed? (y/n):"
-  	read -r response
+  	echo "Proceed? (y/n):"
+  	read -r response < /dev/tty
   	if [ "$response" != "y" ] && [ "$response" != "Y" ]; then
   		echo "Cancelled."
   		exit 1
