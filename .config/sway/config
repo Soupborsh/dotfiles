@@ -14,9 +14,13 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term footclient
 # Your preferred application launcher
-set $menu wmenu-run
+set $menu bemenu-run -i
+
+# Autostart
+exec foot --server
+exec wl-paste --watch cliphist store
 
 ### Output configuration
 #
@@ -33,10 +37,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -60,15 +62,29 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
 
+  input type:touchpad {
+      dwt enabled
+      tap enabled
+      natural_scroll enabled
+      middle_emulation enabled
+  }
+
+  input type:keyboard {
+      xkb_layout "eu,ru"
+  }
+
 ### Key bindings
 #
 # Basics:
 #
+    # Toggle kb layouts with Shift_L+Alt_L
+    bindsym Shift_L+Mod1 input type:keyboard xkb_switch_layout next
+
     # Start a terminal
     bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+c kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
@@ -142,8 +158,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+Shift+b splith
+    bindsym $mod+Shift+v splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -218,8 +234,10 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
     # Special key to take a screenshot with grim
-    bindsym Print exec grim
+    bindsym Print exec grim ~/Pictures/Screenshots/$(date +'Screenshot_%Y%m%d_%H%M%S.png')
 
+    # Clipboard manager
+    bindsym $mod+v exec 'cliphist list | bemenu -l 8 -c -s -W 0.4 | cliphist decode | wl-copy --type text/plain'
 #
 # Status Bar:
 #
