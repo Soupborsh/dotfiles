@@ -70,16 +70,15 @@ exec swayidle -w \
   }
 
   input type:keyboard {
-      xkb_layout "eu,ru"
+      xkb_layout "eu,kz"
+      xkb_variant ",ruskaz"
+      xkb_options "grp:alt_shift_toggle"
   }
 
 ### Key bindings
 #
 # Basics:
 #
-    # Toggle kb layouts with Shift_L+Alt_L
-    bindsym Shift_L+Mod1 input type:keyboard xkb_switch_layout next
-
     # Start a terminal
     bindsym $mod+Return exec $term
 
