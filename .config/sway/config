@@ -240,6 +240,7 @@ bindsym $mod+r mode "resize"
 
     # Special key to take a screenshot with grim
     bindsym Print exec grim ~/Pictures/Screenshots/$(date +'Screenshot_%Y%m%d_%H%M%S.png')
+    bindsym $mod+Print exec sh -c 'grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +'Screenshot_%Y%m%d_%H%M%S.png')'
 
     # Clipboard manager
     bindsym $mod+v exec 'cliphist list | bemenu -l 8 -c -s -W 0.4 | cliphist decode | wl-copy --type text/plain'
