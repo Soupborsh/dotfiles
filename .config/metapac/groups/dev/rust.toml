@@ -1,0 +1,4 @@
+arch = { packages = [
+  "rustup",
+  "taplo-cli",
+] }

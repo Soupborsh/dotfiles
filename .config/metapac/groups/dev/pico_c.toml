@@ -1,0 +1,4 @@
+arch = { packages = [
+  "pico-sdk",
+  "picotool",
+] }
