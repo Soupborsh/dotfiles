@@ -61,7 +61,18 @@ arch = { packages = [
   "fish",
   "flatpak",
   "flatpak-kcm",
-  "foot",
+  {
+    name = "foot",
+    hooks = {
+      after_install = [
+        "systemctl",
+        "--user",
+        "enable",
+        "--now",
+        "foot-server.socket",
+      ]
+    }
+  },
   "fractal",
   "freecad",
   "fuse2",
@@ -302,8 +313,6 @@ cargo = { packages = [
   { name = "espflash", options = { version = "4.5.0", features = [
   ] } },
   { name = "form", options = { version = "0.13.0", features = [
-  ] } },
-  { name = "fresh-editor", options = { version = "0.4.4", features = [
   ] } },
   { name = "gh_pkg", options = { version = "0.1.0", features = [
   ] } },
