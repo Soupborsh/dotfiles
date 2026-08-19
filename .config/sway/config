@@ -22,7 +22,7 @@ set $menu bemenu-run -i
 # Autostart
 #
 
-# exec foot --server
+exec foot --server
 exec wl-paste --watch cliphist store
 exec XDG_MENU_PREFIX=arch- kbuildsycoca6
 
