@@ -1,11 +1,8 @@
 arch = { packages = [
   "f2fs-tools",
-  "genius",
-  "gparted",
   "hdparm",
   "intel-ucode",
   "jre8-openjdk",
-  "konsole",
   "koreader-bin",
   "libeatmydata",
   "libqalculate",
@@ -13,9 +10,7 @@ arch = { packages = [
   "man-pages",
   "man-pages-utils",
   "mandoc",
-  "parcellite",
   "paru",
-  "paru-debug",
   "qt6ct",
   "raylib",
   "sshfs",
@@ -28,13 +23,4 @@ arch = { packages = [
   "xf86-video-nouveau",
   "xorg-xhost",
   "xorg-xwayland",
-  "zellij",
-] }
-cargo = { packages = [
-  { name = "croft", options = { version = "0.1.339", git = "https://codeberg.org/vitali87/croft.git", features = [
-  ] } },
-  { name = "mdbook", options = { version = "0.5.4", features = [
-  ] } },
-  { name = "mdbook-epub", options = { version = "0.5.4", features = [
-  ] } },
 ] }
