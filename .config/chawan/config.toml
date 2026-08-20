@@ -1,0 +1,6 @@
+[buffer]
+images = true
+history = false
+
+[external]
+history-size = 0
