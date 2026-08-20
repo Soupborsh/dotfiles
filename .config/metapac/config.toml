@@ -19,8 +19,8 @@ enabled_backends = ["arch", "cargo"]
 hostname_groups_enabled = true
 
 [hostname_groups]
-mainframe = ["base", "dev/pico_c", "dev/rust"]
-amognus = ["base", "amognus"]
+mainframe = ["base", "dev/pico_c", "dev/rust", "net/artichoke"]
+amognus = ["base", "amognus", "net/artichoke"]
 
 # Backends to enable per hostname. These will be merged with the base
 # `enabled_backends` config.
